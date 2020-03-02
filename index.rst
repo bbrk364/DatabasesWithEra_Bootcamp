@@ -10,7 +10,6 @@
    db/mssqldeploy/mssqldeploy
    db/cloning/cloning
    db/aag/aag
-   db/oraclepatch/oraclepatch
    db/flow_secure_fiesta/flow_secure_fiesta
    db/flow_isolate_fiesta/flow_isolate_fiesta
    prismops/prismops_blue_medora_lab/prismops_blue_medora_lab
