@@ -4,7 +4,7 @@
 Getting Started
 ----------------------
 
-Welcome to the Databases lab track. This track is meant to provide you with first hand experience in why Nutanix is an ideal platform for Database workloads.
+Welcome to the Databases bootcamp. This bootcamp is meant to provide you with first hand experience in why Nutanix is an ideal platform for Database workloads.
 
 Historically, it has been a challenge to virtualize SQL Server because of the high cost of traditional virtualization stacks and the impact that a SAN-based architecture can have on performance. Businesses and their IT departments have constantly fought to balance cost, operational simplicity, and consistent predictable performance.
 
@@ -33,44 +33,7 @@ Maintaining the status quo leads to inefficient usage of both storage and worse,
 
 Nutanix Era provides DBaaS for your Enterprise Cloud. Leveraging the Nutanix Enterprise Cloud OS, we are able to take advantage of the power of full stack - data, compute, and software. Nutanix Era hides the complexity of database operations and provides common APIs, CLI, and consumer-grade GUI experience for multiple database engines. It makes database operations such as cloning efficient, thereby driving down the TCO of database management for our customers.
 
-In this track you'll walk in an administrator's shoes to manually deploy a Microsoft SQL database VM on AHV, and observe first hand how Day 1 and Day 2+ management of that workload can be transformed with Nutanix Era. You'll also experience how Era can be used to provisioning and patch Oracle environments. In addition to Era, you'll see how additional products like Flow and Prism Pro complement database workloads on Nutanix.
-
-If you have not previously completed the **Private Cloud** lab track, follow the quick instructions below to provision your user VLAN and Windows Tools VM that will be used throughout this lab track.
-
-Configuring your User VLANs
-+++++++++++++++++++++++++++
-
-Typically, Hosted POC clusters provide 2x /25 VLANs. In order to provide adequate IP space and support lab requirements for Global Tech Summit, each cluster has been assigned an additional 8x /27 VLANs. The following instructions will walk you through configuring the VLAN you have been individually assigned, and should be used for the remaining labs in this track.
-
-   .. note:: A /27 VLAN provides 32 IP addresses, 5 of which are reserved. You will therefore need to be conscious of cleaning up unneeded VMs to avoid running out of IP space.
-
-#. Log into **Prism Central** using the following credentials:
-
-   - **User Name** - admin
-   - **Password** - techX2020!
-
-#. Select :fa:`bars` **> Virtual Infrastructure > Subnets**.
-
-#. Click **Network Config**, select *Your Assigned Cluster*, and click **OK**.
-
-#. Click **+ Create Network** and fill out the following fields:
-
-   - **Name** - *Refer to*  :ref:`clusterassignments`
-   - **VLAN ID** - *Refer to*  :ref:`clusterassignments`
-   - Select **Enable IP Address Management**
-   - **Network IP Address / Prefix Length** - *Refer to*  :ref:`clusterassignments`
-   - **Gateway IP Address** - *Refer to*  :ref:`clusterassignments`
-   - **Domain Name Servers** - *Refer to*  :ref:`clusterassignments`
-   - **Domain Search** - ntnxlab.local
-   - **Domain Name** - ntnxlab
-   - Select **+ Create Pool**
-   - **Start Address** - *Refer to*  :ref:`clusterassignments`
-   - **End Address** - *Refer to*  :ref:`clusterassignments`
-   - Click **Submit**
-
-   .. figure:: images/1.png
-
-#. Click **Save**.
+In this track you'll walk in an administrator's shoes to manually deploy a Microsoft SQL database VM on AHV, and observe first hand how Day 1 and Day 2+ management of that workload can be transformed with Nutanix Era. In addition to Era, you'll see how additional products like Flow and Prism Pro complement database workloads on Nutanix.
 
 Configuring a Project
 +++++++++++++++++++++
@@ -93,8 +56,8 @@ In this lab you will leverage multiple pre-built Calm Blueprints to provision yo
    - Under **Infrastructure**, select **Select Provider > Nutanix**
    - Click **Select Clusters & Subnets**
    - Select *Your Assigned Cluster*
-   - Under **Subnets**, select **Primary**, **Secondary**, and *Your Assigned User VLAN*, and click **Confirm**
-   - Mark *Your Assigned User VLAN* as the default network by clicking the :fa:`star`
+   - Under **Subnets**, select **Primary**, **Secondary**, and click **Confirm**
+   - Mark **Primary** as the default network by clicking the :fa:`star`
 
    .. figure:: images/3.png
 
@@ -109,7 +72,7 @@ Some exercises in this track will depend on leveraging the Windows Tools VM. Fol
 
 #. Click **+ Create VM**.
 
-#. Fill out the following fields to complete the user VM request, using the **User** specific network details in :ref:`clusterassignments`:
+#. Fill out the following fields to complete the user VM request:
 
    - **Name** - *Initials*\ -WinToolsVM
    - **Description** - Manually deployed Tools VM
@@ -124,7 +87,7 @@ Some exercises in this track will depend on leveraging the Windows Tools VM. Fol
       - Select **Add**
 
    - Select **Add New NIC**
-      - **VLAN Name** - *Assigned User VLAN*
+      - **VLAN Name** - Secondary
       - Select **Add**
 
 #. Click **Save** to create the VM.

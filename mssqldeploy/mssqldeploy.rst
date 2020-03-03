@@ -38,7 +38,7 @@ Manual VM Deployment
       - Select **Add**
 
    - Select **Add New NIC**
-      - **VLAN Name** - *Assigned User VLAN*
+      - **VLAN Name** - Primary
       - Select **Add**
 
 #. Click **Save** to create the VM.
@@ -69,17 +69,17 @@ Manual VM Deployment
 
 #. From the desktop, launch the **01 - Rename Server.ps1** PowerShell script shortcut and fill out the following fields:
 
-   - **Enter the Nutanix cluster IP** - *Assigned Nutanix Cluster IP*
+   - **Enter the Nutanix cluster IP** - *Nutanix Cluster IP*
    - **Enter the Nutanix user name for...** - admin
-   - **Enter the Nutanix password for "admin"** - techX2020!
+   - **Enter the Nutanix password for "admin"** - *HPOC Password*
 
    The script will validate the VM name does not exceed 15 characters and then rename the server to match the VM name.
 
 #. Once VM has rebooted, log in and launch the **02 - Complete Build.ps1** Powershell script shortcut. Fill out the following fields:
 
-   - **Enter the Nutanix cluster IP** - *Assigned Nutanix Cluster IP*
+   - **Enter the Nutanix cluster IP** - *Nutanix Cluster IP*
    - **Enter the Nutanix user name for...** - admin
-   - **Enter the Nutanix password for "admin"** - techX2020!
+   - **Enter the Nutanix password for "admin"** - *HPOC Password*
    - **Enter the Nutanix container name** - Default
 
    .. note::
@@ -147,21 +147,10 @@ Era is distributed as a virtual appliance that can be installed on either AHV or
 #. Fill out the following fields and click **Create**:
 
    - **Engine** - Microsoft SQL Server
-   - **Name** - *Assigned User VLAN*-MSSQL-NETWORK
-   - **Public Service VLAN** - *Assigned User VLAN*
+   - **Name** - Primary-MSSQL-NETWORK
+   - **Public Service VLAN** - Primary
 
    .. figure:: images/9.png
-
-#. Click **+ Create** again and fill out the following fields:
-
-   - **Engine** - Oracle
-   - **Type** - Single Instance
-   - **Name** - *Assigned User VLAN*-ORACLE-NETWORK
-   - **Public Service VLAN** - *Assigned User VLAN*
-
-#. Click **Create** to finish creating your Oracle network profile.
-
-   .. figure:: images/10.png
 
 Registering Your MSSQL VM
 +++++++++++++++++++++++++
@@ -262,7 +251,7 @@ You've completed all the one time operations required to be able to provision an
    - **Description** - (Optional)
    - **Software Profile** - *Initials*\ _MSSQL_2016
    - **Compute Profile** - CUSTOM_EXTRA_SMALL
-   - **Network Profile** - *User VLAN*\ _MSSQL_NETWORK
+   - **Network Profile** - Primary_MSSQL_NETWORK
    - **Database Time Zone** - Eastern Standard Time
    - Select **Join Domain**
    - **Windows Domain Profile** - NTNXLAB
@@ -398,12 +387,12 @@ Another approach could involve adding your new Era database to an existing datab
 
    .. figure:: images/29.png
 
-#. In **Era > Time Machines**, select your *initials*\ **-fiesta_TM** Time Machine. Select **Actions > Log Catch Up > Yes** to ensure the imported data has been flushed to disk prior to the cloning operation in the next lab. 
+#. In **Era > Time Machines**, select your *initials*\ **-fiesta_TM** Time Machine. Select **Actions > Log Catch Up > Yes** to ensure the imported data has been flushed to disk prior to the cloning operation in the next lab.
 
 Provision Fiesta Web Tier
 +++++++++++++++++++++++++
 
-Manipulating data using **SQL Server Management Studio** is boring, especially when THE *Sharon Santana* went through all of the trouble of building a neat front end for your business critical app. In this section you'll deploy the web tier of the application and connect it to your production database.
+Manipulating data using **SQL Server Management Studio** is boring. In this section you'll deploy the web tier of the application and connect it to your production database.
 
 #. `Download the Fiesta Blueprint by right-clicking here <https://raw.githubusercontent.com/nutanixworkshops/ts2020/master/db/mssqldeploy/FiestaNoDB.json>`_. This single-VM Blueprint is used to provision only the web tier portion of the application.
 
@@ -419,7 +408,7 @@ Manipulating data using **SQL Server Management Studio** is boring, especially w
 
    .. figure:: images/31.png
 
-#. In order to launch the Blueprint you must first assign a network to the VM. Select the **NodeReact** Service, and in the **VM** Configuration menu on the right, select *Your Assigned User VLAN* as the **NIC 1** network.
+#. In order to launch the Blueprint you must first assign a network to the VM. Select the **NodeReact** Service, and in the **VM** Configuration menu on the right, select **Primary** as the **NIC 1** network.
 
    .. figure:: images/32.png
 
