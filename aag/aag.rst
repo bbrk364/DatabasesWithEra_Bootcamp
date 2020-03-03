@@ -28,7 +28,7 @@ Era requires a network whose IPs are managed by the Era appliance, allowing it t
 #. Click **+ Create Network** and fill out the following fields:
 
    - **Name** - EraManaged
-   - **VLAN ID** - *Refer to*  :ref:`clusterassignments`
+   - **VLAN ID** - *Refer to Network Info Provided by Bootcamps Leader*
 
    .. figure:: images/2.png
 
@@ -42,13 +42,13 @@ Era requires a network whose IPs are managed by the Era appliance, allowing it t
 
    - **Select a VLAN** - EraManaged
    - Select **Manage IP Address Pool**
-   - **Gateway** - *Refer to*  :ref:`clusterassignments`
+   - **Gateway** - *Refer to Network Info Provided by Bootcamps Leader*
    - Select **Verify**
-   - **Subnet Mask** - *Refer to*  :ref:`clusterassignments`
-   - **Primary DNS** - *Refer to*  :ref:`clusterassignments`
+   - **Subnet Mask** - *Refer to Network Info Provided by Bootcamps Leader*
+   - **Primary DNS** - *Refer to Network Info Provided by Bootcamps Leader*
    - **DNS Domain** - ntnxlab.local
-   - **First Address** - *Refer to*  :ref:`clusterassignments`
-   - **Last Address** - *Refer to*  :ref:`clusterassignments`
+   - **First Address** - *Refer to Network Info Provided by Bootcamps Leader*
+   - **Last Address** - *Refer to Network Info Provided by Bootcamps Leader*
 
    .. figure:: images/4.png
 

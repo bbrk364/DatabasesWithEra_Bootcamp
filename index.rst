@@ -6,13 +6,22 @@
    :name: _dbs
    :hidden:
 
-   db/gettingstarted/gettingstarted
-   db/mssqldeploy/mssqldeploy
-   db/cloning/cloning
-   db/aag/aag
-   db/flow_secure_fiesta/flow_secure_fiesta
-   db/flow_isolate_fiesta/flow_isolate_fiesta
-   prismops/prismops_blue_medora_lab/prismops_blue_medora_lab
+   gettingstarted/gettingstarted
+   mssqldeploy/mssqldeploy
+   cloning/cloning
+   aag/aag
+   flow_secure_fiesta/flow_secure_fiesta
+   flow_isolate_fiesta/flow_isolate_fiesta
+
+.. toctree::
+  :maxdepth: 2
+  :caption: Era Postgres Labs
+  :name: _era_postgres_labs
+  :hidden:
+
+  era_provision_postgresdb/era_provision_postgresdb
+  era_clone_postgresdb/era_clone_postgresdb
+  era_rest_api/era_rest_api
 
 .. toctree::
   :maxdepth: 2
@@ -52,7 +61,9 @@ Agenda
 - Cloning a Databases
 - Setup a AAG
 - Using with Flow
-- Using with Prism Ops
+- Provisioning a Postgres DB
+- Cloning a Postgres DB
+- Era API Explorer
 
 Introductions
 +++++++++++++

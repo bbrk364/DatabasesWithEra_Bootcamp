@@ -71,7 +71,7 @@ Databases aren't applications, they can be comprised of multiple components. For
 
    .. figure:: images/4.png
 
-#. In order to launch the Blueprint you must first assign a network to the VM. Select the **NodeReact** Service, and in the **VM** Configuration menu on the right, select *Your Assigned User VLAN* as the **NIC 1** network.
+#. In order to launch the Blueprint you must first assign a network to the VM. Select the **NodeReact** Service, and in the **VM** Configuration menu on the right, select **Primary** as the **NIC 1** network.
 
    .. figure:: images/5.png
 
