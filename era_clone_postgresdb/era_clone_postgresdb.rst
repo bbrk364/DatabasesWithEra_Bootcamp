@@ -22,7 +22,7 @@ Now that you have created a source database, you can easily clone it using Era T
 
    .. figure:: images/16a2.png
 
-#. Click **Snapshot** and enter **First** as the **Snapshot Name**.
+#. Click **Actions** > **Snapshot** and enter **First** as the **Snapshot Name**.
 
    .. figure:: images/17a.png
 
@@ -32,7 +32,7 @@ Now that you have created a source database, you can easily clone it using Era T
 
    .. figure:: images/18a2.png
 
-#. After the snapshot job completes, select the Time Machine instance for your source database in **Era > Time Machines** and click **Clone Database**.
+#. After the snapshot job completes, select the Time Machine instance for your source database (*Initials*\_LabDB_tm) in **Era > Time Machines** and click **Actions** > **Clone Database**.
 
 #. On the **Time** tab, select **Snapshot > First**.
 
@@ -47,7 +47,7 @@ Now that you have created a source database, you can easily clone it using Era T
 #. On the **Database Server** tab, fill out the following fields:
 
    - **Database Server** - Create New Server
-   - **VM Name** - *Initials*-DBServer-Clone
+   - **Database Server Name** - *Initials*-DBServer-Clone
    - **Compute Profile** - Lab
    - **Network Profile** - DEFAULT_OOB_NETWORK
    - **SSH Public Key** -
@@ -121,7 +121,7 @@ The ability to easily refresh a cloned database using new data from the source d
 
    In this case, you just created the **products** table in your source database, so a manual execution of **Log Catch Up** would be required to copy transactional logs to Era from your source database.
 
-#. In **Era > Time Machines**, select the Time Machine instance for your source database and click **Log Catch Up > Yes**.
+#. In **Era > Time Machines**, select the Time Machine instance for your source database and click **Actions** > **Log Catch Up > Yes**.
 
    .. figure:: images/27c.png
 

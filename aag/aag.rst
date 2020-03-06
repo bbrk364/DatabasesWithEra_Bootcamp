@@ -13,32 +13,20 @@ SQL Server AAG clusters have many moving parts, and deploying a single cluster c
 Creating an Era Managed Network
 +++++++++++++++++++++++++++++++
 
-.. note::
-
-   This operation only needs to be performed **ONCE** per cluster. If the **EraManaged** network has already been added as a resource in Era, you can move on to :ref:`provisioningaag`.
-
-   .. figure:: images/1.png
-
-Era requires a network whose IPs are managed by the Era appliance, allowing it to assign that static IPs required for the cluster VMs and floating IP for the SQL Listener.
-
-#. In **Prism Central**, select :fa:`bars` **> Virtual Infrastructure > Subnets**.\
-
-#. Click **Network Config**, select *Your Assigned Cluster*, and click **OK**.
-
-#. Click **+ Create Network** and fill out the following fields:
-
-   - **Name** - EraManaged
-   - **VLAN ID** - *Refer to Network Info Provided by Bootcamps Leader*
-
-   .. figure:: images/2.png
-
-#. Click **Save**.
-
 #. In **Era > Administration > Era Resources**, click **Add** to create a new Era network.
 
    .. figure:: images/3.png
 
 #. Fill out the following fields and click **Add**:
+
+   .. note:: The network configuration below should roughly match the addressing below.
+       In most cases:
+
+       - "Gateway" will be 10.x.x.129
+       - "Subnet Mask" will be 255.255.255.128
+       - "Primary DNS" will be 10.x.x.41
+       - "First Address" will be 10.x.x.129
+       - "Last Address" will be 10.x.x.253
 
    - **Select a VLAN** - EraManaged
    - Select **Manage IP Address Pool**
@@ -113,8 +101,8 @@ Provisioning an AAG
 
       **Availability Mode** can be configured as either **Synchronous** or **Asynchronous**.
 
-         - **Synchronous-commit replicas** - Data is committed to both primary and secondary nodes at the same time. This mode supports both **Automatic** and **Manual Failover**.
-         - **Asynchronous-commit replicas** - Data is committed to primary first and then after some time-interval, data is committed to the secondary nodes. This mode only supports **Manual Failover**.
+      - **Synchronous-commit replicas** - Data is committed to both primary and secondary nodes at the same time. This mode supports both **Automatic** and **Manual Failover**.
+      - **Asynchronous-commit replicas** - Data is committed to primary first and then after some time-interval, data is committed to the secondary nodes. This mode only supports **Manual Failover**.
 
       **Readable Secondaries** allows you to offload your secondary read-only workloads from your primary replica, which conserves its resources for your mission critical workloads. If you have mission critical read-workload or the workload that cannot tolerate latency (up to a few seconds), you should run it on the primary.
 
