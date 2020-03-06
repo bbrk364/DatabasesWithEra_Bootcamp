@@ -38,7 +38,7 @@ In this exercise you will explore the workflow for cloning a database through th
    - **Database Server** - Create New Server
    - **Database Server Name** - *Default*
    - **Compute Profile** - CUSTOM_EXTRA_SMALL
-   - **Network Profile** - *User Assigned VLAN*\ _MSSQL_NETWORK
+   - **Network Profile** - Primary-MSSQL_NETWORK
    - **Administrator Password** - nutanix/4u
    - Select **Join Domain**
    - **Windows Domain Profile** - NTNXLAB

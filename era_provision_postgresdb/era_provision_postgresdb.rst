@@ -52,6 +52,17 @@ Era makes it even simpler to provision a simple PostgreSQL database by providing
 
 #. Click **Create**.
 
+#. Click **Network**.
+
+#. Click **+ Create** and fill out the following fields:
+   - Select PostgreSQL for the database engine
+   - **Name** - Primary-PGSQL-NETWORK
+   - **Public Service vLAN** - Primary
+
+   .. figure:: images/3f3.png
+
+#. Click **Create**
+
 #. Select **Database Parameters > DEFAULT_POSTGRES_PARAMS** and note the default parameters for a PostgreSQL database provisioned by Era.
 
 #. Select the **Era > Profiles** drop down menu and click **Getting Started**.
@@ -71,10 +82,10 @@ Era makes it even simpler to provision a simple PostgreSQL database by providing
    - **Database Server** - Select **Create New Server**
    - **Database Server Name** - *Initials*-DBServer
    - **Compute Profile** - Lab
-   - **Network Profile** - DEFAULT_OOB_NETWORK
+   - **Network Profile** - DEFAULT_POSTGRES_NETWORK
    - **Software Profile** - POSTGRES_10.4_OOB
    - **Description** - (Optional) Description
-   - **SSH Public Key for Node Access** -
+   - **SSH Public Key for Node Access** - Select **Text**
 
    .. code-block:: text
 
@@ -109,7 +120,7 @@ Era makes it even simpler to provision a simple PostgreSQL database by providing
 
    - **Name** - *Initials*\_LabDB_TM
    - **Description** - (Optional) Description
-   - **SLA** - Gold
+   - **SLA** - DEFAULT_OOB_GOLD_SLA
    - **Schedule** - Default
 
    .. figure:: images/4f2.png
