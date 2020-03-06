@@ -8,7 +8,7 @@ Traditional database VM deployment over resembles the diagram below. The process
 
 .. figure:: images/0.png
 
-Whereas with a Nutanix cluster and Era, provisioning and protecting a database should take you no longer than it took to read this intro - assuming you did. Seriously the first person to walk up to Matt and mention this sentence is getting a hug. Unless you don't want a hug, maybe a high five? Anyways...
+Whereas with a Nutanix cluster and Era, provisioning and protecting a database should take you no longer than it took to read this intro - assuming you did.
 
 **In this lab you will manually deploy a Microsoft SQL Server VM, using a script to apply best practices. This VM will act as a master image to create a profile for deploying additional SQL VMs using Era.**
 
@@ -107,9 +107,9 @@ Exploring Era Resources
 
 Era is distributed as a virtual appliance that can be installed on either AHV or ESXi. For the purposes of conserving memory resources, a shared Era server has already been deployed on your cluster.
 
-   .. note::
+.. note::
 
-      If you're interested, instructions for the brief installation of the Era appliance can be found `here <https://portal.nutanix.com/#/page/docs/details?targetId=Nutanix-Era-User-Guide-v12:era-era-installing-on-ahv-t.html>`_.
+   If you're interested, instructions for the brief installation of the Era appliance can be found `here <https://portal.nutanix.com/#/page/docs/details?targetId=Nutanix-Era-User-Guide-v12:era-era-installing-on-ahv-t.html>`_.
 
 #. In **Prism Central > VMs > List**, identify the IP address assigned to the **EraServer-\*** VM using the **IP Addresses** column.
 
@@ -128,11 +128,17 @@ Era is distributed as a virtual appliance that can be installed on either AHV or
 
 #. Select **Era Resources** from the left-hand menu.
 
-#. Under **VLANs Available for Network Profiles**, click **Add**. Select your *User* VLAN and click **Add**.
+#. Under **VLANs Available for Network Profiles**, click **Add**. Select **Primary** VLAN and click **Add**.
+
+   .. note::
+
+      Leave **Manage IP Address Pool** unchecked, as we will be leveraging the cluster's IPAM to manage addresses
 
    .. figure:: images/7.png
 
 #. From the dropdown menu, select **SLAs**.
+
+   .. figure:: images/7a.png
 
    Era has five built-in SLAs (Gold, Silver, Bronze, Zero, and Brass). SLAs control however of the database server is backed up. This can with a combination of Continuous Protection, Daily, Weekly Monthly and Quarterly protection intervals.
 
@@ -262,6 +268,8 @@ You've completed all the one time operations required to be able to provision an
    - **Database Parameter Profile** - DEFAULT_SQLSERVER_INSTANCE_PARAMS
    - **SQL Service Startup Account** - ntnxlab.local\\Administrator
    - **SQL Service Startup Account Password** - nutanix/4u
+   - **SQL Server Authentication Mode** - Windows Authentication
+   - **Domain User Account** - (Leave Blank)
 
    .. figure:: images/19.png
 
@@ -271,10 +279,10 @@ You've completed all the one time operations required to be able to provision an
 
       **Server Collation** is a configuration setting that determines how the database engine should treat character data at the server, database, or column level. SQL Server includes a large set of collations for handling the language and regional differences that come with supporting users and applications in different parts of the world. A collation can also control case sensitivity on database. You can have different collations for each database on a single instance. The default collation is **SQL_Latin1_General_CP1_CI_AS** which breaks out like below:
 
-         - **Latin1** makes the server treat strings using charset latin 1, basically **ASCII**
-         - **CP1** stands for Code Page 1252. CP1252 is  single-byte character encoding of the Latin alphabet, used by default in the legacy components of Microsoft Windows for English and some other Western languages
-         - **CI** indicates case insensitive comparisons, meaning **ABC** would equal **abc**
-         - **AS** indicates accent sensitive, meaning **ü** does not equal **u**
+      - **Latin1** makes the server treat strings using charset latin 1, basically **ASCII**
+      - **CP1** stands for Code Page 1252. CP1252 is  single-byte character encoding of the Latin alphabet, used by default in the legacy components of Microsoft Windows for English and some other Western languages
+      - **CI** indicates case insensitive comparisons, meaning **ABC** would equal **abc**
+      - **AS** indicates accent sensitive, meaning **ü** does not equal **u**
 
       **Database Parameter Profiles** define the minimum server memory SQL Server should start with, as well as the maximum amount of memory SQL server will use. By default, it is set high enough that SQL Server can use all available server memory. You can also enable contained databases feature which will isolate the database from others on the instance for authentication.
 
@@ -348,7 +356,7 @@ Exploring the Provisioned DB Server
    - **User Name** - NTNXLAB\\Administrator
    - **Password** - nutanix/4u
 
-#. Open **Start > Run > diskmgmt.msc** to view the in-guest disk layout. Right-click an unlabeled volume and select **Change Drive Letter and Paths** to view the path to which Era has mounted the volume. Note there are dedicated drives corresponding to SQL data and log locations, similar to the original SQL Server to which you manually applied best practices. <Anything else to share here?>
+#. Open **Start > Run > diskmgmt.msc** to view the in-guest disk layout. Right-click an unlabeled volume and select **Change Drive Letter and Paths** to view the path to which Era has mounted the volume. Note there are dedicated drives corresponding to SQL data and log locations, similar to the original SQL Server to which you manually applied best practices.
 
    .. figure:: images/25.png
 
@@ -404,7 +412,7 @@ Manipulating data using **SQL Server Management Studio** is boring. In this sect
 
 #. Update the **Blueprint Name** to include your initials. Even across different projects, Calm Blueprint names must be unique.
 
-#. Select your Calm project and click **Upload**.
+#. Select *BootcampInfra** as the Calm project and click **Upload**.
 
    .. figure:: images/31.png
 
@@ -453,12 +461,12 @@ Manipulating data using **SQL Server Management Studio** is boring. In this sect
 #. Click **Launch** and fill out the following fields:
 
    - **Name of the Application** - *Initials*\ -Fiesta
+   - **db_password** - nutanix/4u
+   - **db_name** - *Initials*\ -fiesta (as configured when you deployed through Era)
    - **db_dialect** - mssql
    - **db_domain_name** - ntnxlab.local
-   - **db_host_address** - The IP of your *Initials*\ **-MSSQL2** VM
-   - **db_name** - *Initials*\ -fiesta (as configured when you deployed through Era)
-   - **db_password** - nutanix/4u
    - **db_username** - Administrator
+   - **db_host_address** - The IP of your *Initials*\ **-MSSQL2** VM
 
    .. figure:: images/34.png
 
