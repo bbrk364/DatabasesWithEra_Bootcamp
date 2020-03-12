@@ -115,7 +115,7 @@ Throughout the Workshop there are multiple instances where you will need to subs
      - Nutanix Cluster Virtual IP
    * - 10.21.\ *XYZ*\ .39
      - **PC** VM IP, Prism Central
-   * - 10.21.\ *XYZ*\ .40
+   * - 10.21.\ *XYZ*\ .41
      - **DC** VM IP, NTNXLAB.local Domain Controller
 
 Each cluster is configured with 2 VLANs which can be used for VMs:
